@@ -6,15 +6,20 @@
 /*   By: malebrun <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/04 16:18:34 by malebrun          #+#    #+#             */
-/*   Updated: 2025/12/04 16:29:00 by malebrun         ###   ########.fr       */
+/*   Updated: 2025/12/04 17:03:56 by malebrun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	butterflysort(stack *a, stack *b)
+#include "push_swap.h"
+
+void	butterflysort(t_stack *a, t_stack *b)
 {
+	(void) a;
+	(void)b;
+	printf("rien");
 }
 
-int	**chunk(stack *a, stack *b)
+int	**chunk(t_stack *a, t_stack *b)
 {
 	int	**result;
 
