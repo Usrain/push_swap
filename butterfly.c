@@ -14,17 +14,20 @@
 
 void	butterflysort(t_stack *a, t_stack *b)
 {
-	(void) a;
-	(void)b;
-	printf("rien");
+	int	c_size = 30;
+
+
 }
 
-int	**chunk(t_stack *a, t_stack *b)
+static int	chunk(t_stack *a, t_stack *b)
 {
-	int	**result;
+	int	chunk_amount;
 
-	result = malloc(sizeof(int *) * (a->size / 10 + 1));
-	if (!result)
-		return (NULL);
-	
+	if (a->size < 100)
+		chunk_amount = 5;
+	else if (a->size <=500)
+		chunk_amount = 15;
+	else
+		chunk_amount = 20;
+	return (chunk_amount);
 }

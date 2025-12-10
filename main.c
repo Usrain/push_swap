@@ -29,7 +29,7 @@ int	main(int ac, char **av)
 		write(2, "ko", 2);
 		return (1);
 	}
-	lys_sort(stack_a, stack_b);
+	fill_index(stack_a);
 
 	//
 	int	i;
@@ -38,7 +38,7 @@ int	main(int ac, char **av)
 	printf("stack a :\n");
 	while (test)
 	{
-		printf("%d : %d \n", i, test->value);
+		printf("%d : %d  index : %d\n", i, test->value, test->index);
 		test = test->next;
 		i++;
 	}
@@ -47,7 +47,7 @@ int	main(int ac, char **av)
 	i = 0;
 	while (test)
 	{
-		printf("%d : %d \n", i, test->value);
+		printf("%d : %d  \n", i, test->value);
 		test = test->next;
 		i++;
 	}

@@ -23,7 +23,9 @@ static void	rotate(t_stack *stack)
 	while (temp->next)
 		temp = temp->next;
 	temp->next = first;
+	first->prev = temp;
 	first->next = NULL;
+	stack->head->prev = NULL;
 }
 
 void	ra(t_stack *stack)

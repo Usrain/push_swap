@@ -22,6 +22,9 @@ void	push(t_stack *take, t_stack *place)
 	take->head = temp->next;
 	temp->next = place->head;
 	place->head = temp;
+	take->head->prev = NULL;
+	if (place->head->next)
+		place->head->next->prev = place->head;
 	take->size--;
 	place->size++;
 }

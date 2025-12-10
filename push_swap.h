@@ -20,6 +20,8 @@
 typedef struct s_node
 {
 	int				value;
+	int				index;
+	struct s_node	*prev;
 	struct s_node	*next;
 }			t_node;
 
@@ -56,5 +58,5 @@ t_stack *init_stack(char **av);
 int 	ft_strlen(char *str);
 int		check_dup(t_stack *stack);
 t_stack *create_stack(void);
-void    lys_sort(t_stack *a, t_stack *b);
+void	fill_index(t_stack *a);
 #endif

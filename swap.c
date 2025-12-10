@@ -24,6 +24,8 @@ void	swap_first(t_stack *stack)
 	first->next = second->next;
 	second->next = first;
 	stack->head = second;
+	stack->head->prev = NULL;
+	stack->head->next->prev = stack->head;
 }
 
 void	sa(t_stack *stack)

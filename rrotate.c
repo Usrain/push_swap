@@ -28,6 +28,8 @@ static void	rreverse(t_stack *stack)
 	temp2->next = NULL;
 	temp->next = stack->head;
 	stack->head = temp;
+	stack->head->next->prev = stack->head;
+	stack->head->prev = NULL;
 }
 
 void	rra(t_stack *stack)

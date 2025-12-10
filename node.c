@@ -20,6 +20,8 @@ static t_node	*init_node(int val)
 	if (!rvalue)
 		return (NULL);
 	rvalue->value = val;
+	rvalue->index = -1;
+	rvalue->prev = NULL;
 	rvalue->next = NULL;
 	return (rvalue);
 }
@@ -35,6 +37,9 @@ void	add_front(int val, t_stack *stack)
 		return ;
 	}
 	temp->next = stack->head;
+	temp->index = -1;
+	temp->prev = NULL;
+	stack->head->prev = temp;
 	stack->head = temp;
 	stack->size++;
 }
@@ -52,6 +57,7 @@ void	add_back(int val, t_stack *stack)
 	}
 	temp->value = val;
 	temp->next = NULL;
+	temp->index = -1;
 	if (!stack->head)
 	{
 		stack->head = temp;
@@ -62,6 +68,7 @@ void	add_back(int val, t_stack *stack)
 	while (current->next)
 		current = current->next;
 	current->next = temp;
+	temp->prev = current;
 	stack->size++;
 }
 
