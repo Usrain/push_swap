@@ -6,7 +6,7 @@
 /*   By: malebrun <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 21:47:20 by malebrun          #+#    #+#             */
-/*   Updated: 2025/12/04 15:04:54 by malebrun         ###   ########.fr       */
+/*   Updated: 2025/12/12 18:30:57 by malebrun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ typedef struct s_node
 {
 	int				value;
 	int				index;
+	int				inlis;
 	struct s_node	*prev;
 	struct s_node	*next;
 }			t_node;
@@ -59,4 +60,8 @@ int 	ft_strlen(char *str);
 int		check_dup(t_stack *stack);
 t_stack *create_stack(void);
 void	fill_index(t_stack *a);
+void    sort_stacks(t_stack *a, t_stack *b, t_lis *lisarr, int lis_size);
+void    lis(t_stack *a, t_stack *b);
+int is_in_lis(int val, int size, t_lis *lisarr);
+
 #endif

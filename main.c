@@ -6,7 +6,7 @@
 /*   By: malebrun <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/02 16:24:10 by malebrun          #+#    #+#             */
-/*   Updated: 2025/12/04 14:51:46 by malebrun         ###   ########.fr       */
+/*   Updated: 2025/12/12 18:33:46 by malebrun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	main(int ac, char **av)
 		return (1);
 	}
 	fill_index(stack_a);
-
+	lis(stack_a, stack_b);
 	//
 	int	i;
 	i = 0;
@@ -38,7 +38,7 @@ int	main(int ac, char **av)
 	printf("stack a :\n");
 	while (test)
 	{
-		printf("%d : %d  index : %d\n", i, test->value, test->index);
+		printf("%d : %d  index : %d  inlis : %d\n", i, test->value, test->index, test->inlis);
 		test = test->next;
 		i++;
 	}

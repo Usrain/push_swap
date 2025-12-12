@@ -6,7 +6,7 @@
 /*   By: malebrun <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 21:59:05 by malebrun          #+#    #+#             */
-/*   Updated: 2025/12/02 15:12:42 by malebrun         ###   ########.fr       */
+/*   Updated: 2025/12/12 18:13:24 by malebrun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ static t_node	*init_node(int val)
 		return (NULL);
 	rvalue->value = val;
 	rvalue->index = -1;
+	rvalue->inlis = 0;
 	rvalue->prev = NULL;
 	rvalue->next = NULL;
 	return (rvalue);
