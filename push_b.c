@@ -10,7 +10,9 @@ void	push_b(t_stack *a, t_stack *b)
 {
 	int	i;
 	int	size;
+	int	spliter;
 
+	spliter = get_spliter(a);
 	size = a->size;
 	i = 0;
 	while (i < size)
@@ -19,7 +21,7 @@ void	push_b(t_stack *a, t_stack *b)
 			ra(a);
 		else
 		{
-			if (a->head->index < get_spliter(a))
+			if (a->head->index < spliter)
 				pb(a, b);
 			else
 			{
