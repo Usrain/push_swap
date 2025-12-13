@@ -25,3 +25,16 @@ int	is_in_lis(int val, int size, t_lis *lisarr)
 	}
 	return (0);
 }
+
+void	setuplis(t_stack *a, t_lis *lisar)
+{
+	t_node *temp;
+
+	temp = a->head;
+	while (temp)
+	{
+		if (is_in_lis(temp->value, a->size, lisar))
+			temp->inlis = 1;
+		temp = temp->next;
+	}
+}

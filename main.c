@@ -31,6 +31,7 @@ int	main(int ac, char **av)
 	}
 	fill_index(stack_a);
 	lis(stack_a, stack_b);
+	push_b(stack_a, stack_b);
 	//
 	int	i;
 	i = 0;
@@ -47,7 +48,7 @@ int	main(int ac, char **av)
 	i = 0;
 	while (test)
 	{
-		printf("%d : %d  \n", i, test->value);
+		printf("%d : %d  index : %d  inlis : %d\n", i, test->value, test->index, test->inlis);
 		test = test->next;
 		i++;
 	}

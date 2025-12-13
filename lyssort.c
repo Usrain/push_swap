@@ -94,24 +94,56 @@ static void	fill_in_lis(t_lis *lisarr, int size)
 	}
 }
 
-listarr	get_best_lis(t_stack *a, )
-void	lis(t_stack *a, t_stack *b)
+static int	get_best_lis(t_stack *a, int size, int setup)
 {
-	t_lis	*listarr;
-	t_node	*temp;
-	t_node	first;
-	t_node	best;
-	first = a->head;
+	t_lis *listarr;
+	int	count;
+	int	i;
+
 	listarr = stack_to_arr(a);
 	if (!listarr)
-		return ;
+		return (0);
 	listarr = fill_lis_arr(listarr, a->size);
 	fill_in_lis(listarr, a->size);
-	temp = a->head;
-	while (temp)
+	count = 0;
+	i = 0;
+	while (i < a->size)
 	{
-		if (is_in_lis(temp->value, a->size, listarr))
-			temp->inlis = 1;
-		temp = temp->next;
+		if (listarr[i].inlis == 1)
+			count++;
+		i++;
 	}
+	if (setup)
+		setuplis(a, listarr);
+	free(listarr);
+	return (count);
+}
+
+void	lis(t_stack *a, t_stack *b)
+{
+	t_node 	*temp;
+	t_node 	*first;
+	t_node 	*bestnode;
+	int	best;
+	int	size;
+
+	first = a->head;
+	best = get_best_lis(a,a->size, 0);
+	bestnode = a->head;
+	rotate(a);
+	while (a->head != first)
+	{
+		size = get_best_lis(a, a->size, 0);
+		if (size > best)
+		{
+			best = size;
+			bestnode = a->head;
+		}
+		rotate(a);
+	}
+	while (a->head != bestnode)
+		rotate(a);
+	get_best_lis(a, a->size, 1);
+	while (a->head != first)
+		rotate(a);
 }

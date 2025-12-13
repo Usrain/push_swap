@@ -63,5 +63,12 @@ void	fill_index(t_stack *a);
 void    sort_stacks(t_stack *a, t_stack *b, t_lis *lisarr, int lis_size);
 void    lis(t_stack *a, t_stack *b);
 int is_in_lis(int val, int size, t_lis *lisarr);
-
+void	rotate(t_stack *stack);
+void	setuplis(t_stack *a, t_lis *lisar);
+void	push_b(t_stack *a, t_stack *b);
+void	ra(t_stack *stack);
+void	rb(t_stack *stack);
+void	rr(t_stack *stack_a, t_stack *stack_b);
+void	pa(t_stack *stacka, t_stack *stackb);
+void	pb(t_stack *stacka, t_stack *stackb);
 #endif
