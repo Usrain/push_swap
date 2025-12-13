@@ -6,7 +6,7 @@
 /*   By: malebrun <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 21:47:20 by malebrun          #+#    #+#             */
-/*   Updated: 2025/12/12 18:30:57 by malebrun         ###   ########.fr       */
+/*   Updated: 2025/12/13 19:23:25 by malebrun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,9 @@ typedef struct s_lis
 
 typedef	struct s_sorter
 {
-	int	value_b;
-	int op_amount;
-	int	place_after;
+	int	rr;
+	int r;
+	int	amount;
 }				t_sorter;
 
 
