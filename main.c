@@ -32,6 +32,14 @@ int	main(int ac, char **av)
 	fill_index(stack_a);
 	lis(stack_a, stack_b);
 	push_b(stack_a, stack_b);
+
+	t_node	*temp = stack_b->head;
+
+	while (temp)
+	{
+		get_sort_cost(stack_a, stack_b, temp);
+		temp = temp->next;
+	}
 	//
 	int	i;
 	i = 0;

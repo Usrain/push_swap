@@ -10,7 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-t_node	*place_after(t_stack *a, int value)
+#include "push_swap.h"
+
+static t_node	*place_after(t_stack *a, int value)
 {
 	t_node	*maxedmin;
 	t_node	*temp;
@@ -21,14 +23,14 @@ t_node	*place_after(t_stack *a, int value)
 	{
 		if (!maxedmin && temp->index < value)
 			maxedmin = temp;
-		if (maxedmin && temp->index > maxedmin && temp->index < value)
+		if (maxedmin && temp->index > maxedmin->index && temp->index < value)
 			maxedmin = temp;
 		temp = temp->next;
 	}
 	return (maxedmin);
 }
 
-t_sorter todinb(t_stack *b, int value)
+static t_sorter todoinb(t_stack *b, int value)
 {
 	int			i;
 	t_sorter	result;
@@ -43,7 +45,7 @@ t_sorter todinb(t_stack *b, int value)
 		result.amount = 0;
 		return (result);
 	}
-	while (temp && temp->index !value)
+	while (temp && temp->index != value)
 	{
 		temp = temp->next;
 		i++;
@@ -54,7 +56,7 @@ t_sorter todinb(t_stack *b, int value)
 	return (result);
 }
 
-t_sorter	todoina(t_stack *a, int value, t_node *placeafter)
+static t_sorter	todoina(t_stack *a, int value, t_node *placeafter)
 {
 	t_node *temp;
 	t_sorter	result;
@@ -80,12 +82,25 @@ t_sorter	todoina(t_stack *a, int value, t_node *placeafter)
 	return (result);
 }
 
-int	get_sort_cost(t_stack *a, t_stack *b, t_node *tosort)
+static int	get_total_cost(t_sorter a, t_sorter b)
 {
-	t_node *temp;
-	int		op_amount;
+	if (a.r == 0 && a.rr == 0)
+		return (b.amount + 1);
+	if (b.r == 0 && b.rr ==0)
+		return (a.amount + 1);
+	if ((a.r == 1 && b.rr == 1) || (a.rr == 1 && b.r == 1))
+		return (a.amount + b.amount + 1);
+	if ((a.r == 1 && b.r == 1) || (a.rr == 1 && b.rr == 1)) //todo comparer 4 scenario
+		return (((a.amount > b.amount) * a.amount) + ((a.amount <= b.amount) * b.amount) + 1);
+}
 
-	temp = b->head;
-	place_after(a, tosort->index);
+t_sort_cost	get_sort_cost(t_stack *a, t_stack *b, t_node *tosort)
+{
+	t_sort_cost total;
 
+	total.a = todoina(a, tosort->index, place_after(a, tosort->index));
+	total.b = todoinb(b, tosort->index);
+	total.totalcost = get_total_cost(total.a, total.b);
+	printf("valeur : %d, set to sort it : %d \n", tosort->value, total.totalcost);
+	return (total);
 }

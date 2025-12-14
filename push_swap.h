@@ -41,6 +41,12 @@ typedef	struct s_sorter
 	int	amount;
 }				t_sorter;
 
+typedef  struct s_sort_cost
+{
+	t_sorter	a;
+	t_sorter	b;
+	int		totalcost;
+}				t_sort_cost;
 
 typedef struct s_stack
 {
@@ -71,4 +77,5 @@ void	rb(t_stack *stack);
 void	rr(t_stack *stack_a, t_stack *stack_b);
 void	pa(t_stack *stacka, t_stack *stackb);
 void	pb(t_stack *stacka, t_stack *stackb);
+t_sort_cost	get_sort_cost(t_stack *a, t_stack *b, t_node *tosort);
 #endif
