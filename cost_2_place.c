@@ -6,7 +6,7 @@
 /*   By: malebrun <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/13 17:58:54 by malebrun          #+#    #+#             */
-/*   Updated: 2025/12/13 19:52:39 by malebrun         ###   ########.fr       */
+/*   Updated: 2025/12/14 18:20:25 by malebrun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,10 @@ static t_sorter todoinb(t_stack *b, int value)
 		temp = temp->next;
 		i++;
 	}
-	result.rr = b->size / 2 >= i;
-	result.r = b->size / 2 < i;
-	result.amount = i;
-	return (result);
+	result.rr = (i <= b->size / 2);
+	result.r = (i > b->size / 2);
+	result.amount = i * result.r + (b->size - i) * result.rr;
+	return (result); 
 }
 
 static t_sorter	todoina(t_stack *a, int value, t_node *placeafter)
@@ -76,9 +76,9 @@ static t_sorter	todoina(t_stack *a, int value, t_node *placeafter)
 		i++;
 		temp = temp->next;
 	}
-	result.rr = a->size / 2 >= i;
-	result.r = a->size / 2 < i;
-	result.amount = i;
+	result.rr = (i <= a->size / 2);
+	result.r = (i > a->size / 2);
+	result.amount = i * result.r + (a->size - i) * result.rr;
 	return (result);
 }
 
@@ -90,8 +90,14 @@ static int	get_total_cost(t_sorter a, t_sorter b)
 		return (a.amount + 1);
 	if ((a.r == 1 && b.rr == 1) || (a.rr == 1 && b.r == 1))
 		return (a.amount + b.amount + 1);
-	if ((a.r == 1 && b.r == 1) || (a.rr == 1 && b.rr == 1)) //todo comparer 4 scenario
-		return (((a.amount > b.amount) * a.amount) + ((a.amount <= b.amount) * b.amount) + 1);
+	if (a.amount > b.amount)
+	{
+		return (a.amount + 1);
+	}
+	else
+	{
+		return (b.amount + 1);
+	}
 }
 
 t_sort_cost	get_sort_cost(t_stack *a, t_stack *b, t_node *tosort)
