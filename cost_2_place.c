@@ -6,7 +6,7 @@
 /*   By: malebrun <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/13 17:58:54 by malebrun          #+#    #+#             */
-/*   Updated: 2025/12/23 02:51:16 by malebrun         ###   ########.fr       */
+/*   Updated: 2025/12/23 05:23:26 by malebrun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ static t_sorter todoinb(t_stack *b, int value)
 	return (result); 
 }
 
-static t_sorter	todoina(t_stack *a, int value, t_node *placeafter)
+static t_sorter	todoina(t_stack *a, t_node *placeafter)
 {
 	t_node *temp;
 	t_sorter	result;
@@ -119,7 +119,7 @@ t_sort_cost	get_sort_cost(t_stack *a, t_stack *b, t_node *tosort)
 {
 	t_sort_cost total;
 
-	total.a = todoina(a, tosort->index, place_after(a, tosort->index));
+	total.a = todoina(a, place_after(a, tosort->index));
 	total.b = todoinb(b, tosort->index);
 	total.totalcost = get_total_cost(total.a, total.b);
 	return (total);

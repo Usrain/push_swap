@@ -6,7 +6,7 @@
 /*   By: malebrun <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 21:47:20 by malebrun          #+#    #+#             */
-/*   Updated: 2025/12/23 01:30:56 by malebrun         ###   ########.fr       */
+/*   Updated: 2025/12/23 05:29:40 by malebrun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ int		check_dup(t_stack *stack);
 t_stack *create_stack(void);
 void	fill_index(t_stack *a);
 void    sort_stacks(t_stack *a, t_stack *b, t_lis *lisarr, int lis_size);
-void    lis(t_stack *a, t_stack *b);
+void    lis(t_stack *a);
 int is_in_lis(int val, int size, t_lis *lisarr);
 void	rotate(t_stack *stack);
 void	setuplis(t_stack *a, t_lis *lisar);

@@ -6,7 +6,7 @@
 /*   By: malebrun <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 15:59:35 by malebrun          #+#    #+#             */
-/*   Updated: 2025/12/02 17:16:04 by malebrun         ###   ########.fr       */
+/*   Updated: 2025/12/23 05:23:50 by malebrun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ long	ft_atol(char *nptr)
 	while (nptr[i] >= '0' && nptr[i] <= '9')
 	{
 		if ((neg == 1 && result > (2147483647 - nptr[i] - '0') / 10)
-			|| neg == -1 && -result < (-2147483648 + nptr[i] - '0') / 10)
+			|| (neg == -1 && -result < (-2147483648 + nptr[i] - '0') / 10))
 			return (2147483649);
 		result = result * 10 + nptr[i] - '0';
 		i++;

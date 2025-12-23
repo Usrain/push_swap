@@ -6,7 +6,7 @@
 /*   By: malebrun <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/03 18:11:48 by malebrun          #+#    #+#             */
-/*   Updated: 2025/12/12 18:48:39 by malebrun         ###   ########.fr       */
+/*   Updated: 2025/12/23 05:29:14 by malebrun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ static void	fill_in_lis(t_lis *lisarr, int size)
 	}
 }
 
-static int	get_best_lis(t_stack *a, int size, int setup)
+static int	get_best_lis(t_stack *a, int setup)
 {
 	t_lis *listarr;
 	int	count;
@@ -119,21 +119,20 @@ static int	get_best_lis(t_stack *a, int size, int setup)
 	return (count);
 }
 
-void	lis(t_stack *a, t_stack *b)
+void	lis(t_stack *a)
 {
-	t_node 	*temp;
 	t_node 	*first;
 	t_node 	*bestnode;
 	int	best;
 	int	size;
 
 	first = a->head;
-	best = get_best_lis(a,a->size, 0);
+	best = get_best_lis(a, 0);
 	bestnode = a->head;
 	rotate(a);
 	while (a->head != first)
 	{
-		size = get_best_lis(a, a->size, 0);
+		size = get_best_lis(a, 0);
 		if (size > best)
 		{
 			best = size;
@@ -143,7 +142,7 @@ void	lis(t_stack *a, t_stack *b)
 	}
 	while (a->head != bestnode)
 		rotate(a);
-	get_best_lis(a, a->size, 1);
+	get_best_lis(a, 1);
 	while (a->head != first)
 		rotate(a);
 }

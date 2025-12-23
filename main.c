@@ -6,12 +6,12 @@
 /*   By: malebrun <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/02 16:24:10 by malebrun          #+#    #+#             */
-/*   Updated: 2025/12/23 02:57:16 by malebrun         ###   ########.fr       */
+/*   Updated: 2025/12/23 05:31:11 by malebrun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-static void test(t_stack *a, t_stack *b)
+/*static void test(t_stack *a, t_stack *b)
 {
 	int	i;
 	i = 0;
@@ -33,7 +33,7 @@ static void test(t_stack *a, t_stack *b)
 		i++;
 	}
 	printf("\n \n %s \n \n", "____________________next___________________");
-}
+}*/
 
 static void min_sort(t_stack *a, t_stack *b)
 {
@@ -61,17 +61,17 @@ static void min_sort(t_stack *a, t_stack *b)
 
 static void final_order(t_stack *a)
 {
-	t_node	*min;
 	t_node	*temp;
 	int		foundat;
 
+	foundat = 0;
 	temp = a->head;
 	while (temp->index != 0)
 	{
 		temp = temp->next;
 		foundat++;
 	}
-	if (foundat > a->size / 2)
+	if (foundat <= a->size / 2)
 		while (a->head->index != 0)
 			ra(a);
 	else
@@ -84,6 +84,7 @@ int	main(int ac, char **av)
 	t_stack	*stack_a;
 	t_stack	*stack_b;
 
+	(void) ac;
 	stack_a = init_stack(av);
 	if (!stack_a)
 		return (1);
@@ -97,7 +98,7 @@ int	main(int ac, char **av)
 		return (1);
 	}
 	fill_index(stack_a);
-	lis(stack_a, stack_b);
+	lis(stack_a);
 	push_b(stack_a, stack_b);
 
 	while (stack_b->head)
