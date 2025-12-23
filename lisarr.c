@@ -6,7 +6,7 @@
 /*   By: malebrun <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/03 20:22:49 by malebrun          #+#    #+#             */
-/*   Updated: 2025/12/04 13:04:00 by malebrun         ###   ########.fr       */
+/*   Updated: 2025/12/23 05:49:27 by malebrun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	is_in_lis(int val, int size, t_lis *lisarr)
 
 void	setuplis(t_stack *a, t_lis *lisar)
 {
-	t_node *temp;
+	t_node	*temp;
 
 	temp = a->head;
 	while (temp)

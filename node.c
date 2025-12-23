@@ -6,7 +6,7 @@
 /*   By: malebrun <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 21:59:05 by malebrun          #+#    #+#             */
-/*   Updated: 2025/12/12 18:13:24 by malebrun         ###   ########.fr       */
+/*   Updated: 2025/12/23 05:38:43 by malebrun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static t_node	*init_node(int val)
 {
-	t_node *rvalue;
+	t_node	*rvalue;
 
 	rvalue = malloc(sizeof(t_node));
 	if (!rvalue)
@@ -79,14 +79,13 @@ void	free_stack(t_stack *stack)
 	t_node	*next;
 
 	if (!stack)
-		return;
+		return ;
 	current = stack->head;
 	while (current)
 	{
 		next = current->next;
 		free(current);
 		current = next;
-	
 	}
 	free(stack);
 }

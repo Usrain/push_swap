@@ -6,7 +6,7 @@
 /*   By: malebrun <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/30 18:00:02 by malebrun          #+#    #+#             */
-/*   Updated: 2025/12/02 17:19:47 by malebrun         ###   ########.fr       */
+/*   Updated: 2025/12/23 06:06:54 by malebrun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static int	movetonext(char *arg)
 {
 	int	i;
-	
+
 	i = 0;
 	while (is_whitespace(arg[i]))
 		i++;
@@ -28,7 +28,8 @@ static int	movetonext(char *arg)
 
 t_stack	*create_stack(void)
 {
-	t_stack *result;
+	t_stack	*result;
+
 	result = malloc(sizeof(t_stack));
 	if (!result)
 		return (NULL);
@@ -37,17 +38,14 @@ t_stack	*create_stack(void)
 	return (result);
 }
 
-t_stack	*init_stack(char **av)
+t_stack	*init_stack(char **av, int i, t_stack *stack_a)
 {
-	t_stack	*stack_a;
-	int		i;
 	int		j;
 	long	result;
 
 	stack_a = create_stack();
 	if (!stack_a)
 		return (NULL);
-	i = 1;
 	while (av[i])
 	{
 		result = 0;

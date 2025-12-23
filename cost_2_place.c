@@ -6,7 +6,7 @@
 /*   By: malebrun <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/13 17:58:54 by malebrun          #+#    #+#             */
-/*   Updated: 2025/12/23 05:23:26 by malebrun         ###   ########.fr       */
+/*   Updated: 2025/12/23 06:23:26 by malebrun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,23 +16,10 @@ static t_node	*place_after(t_stack *a, int value)
 {
 	t_node	*maxedmin;
 	t_node	*temp;
-	t_node	*min;
-	t_node	*max;
 
 	temp = (a->head);
-	min = temp;
-	max = temp;
-	while (temp)
-	{
-		if (temp->index < min->index)
-			min = temp;
-		if (temp->index > max->index)
-			max = temp;
-		temp = temp->next;
-	}
-	if (value < min->index)
-		return (max);
-	temp = a->head;
+	if (value < get_min(a)->index)
+		return (get_max(a));
 	maxedmin = NULL;
 	while (temp)
 	{
@@ -45,7 +32,7 @@ static t_node	*place_after(t_stack *a, int value)
 	return (maxedmin);
 }
 
-static t_sorter todoinb(t_stack *b, int value)
+static t_sorter	todoinb(t_stack *b, int value)
 {
 	int			i;
 	t_sorter	result;
@@ -68,14 +55,14 @@ static t_sorter todoinb(t_stack *b, int value)
 	result.rr = (i > b->size / 2);
 	result.r = (i <= b->size / 2);
 	result.amount = i * result.r + (b->size - i) * result.rr;
-	return (result); 
+	return (result);
 }
 
 static t_sorter	todoina(t_stack *a, t_node *placeafter)
 {
-	t_node *temp;
+	t_node		*temp;
 	t_sorter	result;
-	int		i;
+	int			i;
 
 	if (!placeafter)
 	{
@@ -101,7 +88,7 @@ static int	get_total_cost(t_sorter a, t_sorter b)
 {
 	if (a.r == 0 && a.rr == 0)
 		return (b.amount + 1);
-	if (b.r == 0 && b.rr ==0)
+	if (b.r == 0 && b.rr == 0)
 		return (a.amount + 1);
 	if ((a.r == 1 && b.rr == 1) || (a.rr == 1 && b.r == 1))
 		return (a.amount + b.amount + 1);
@@ -117,7 +104,7 @@ static int	get_total_cost(t_sorter a, t_sorter b)
 
 t_sort_cost	get_sort_cost(t_stack *a, t_stack *b, t_node *tosort)
 {
-	t_sort_cost total;
+	t_sort_cost	total;
 
 	total.a = todoina(a, place_after(a, tosort->index));
 	total.b = todoinb(b, tosort->index);

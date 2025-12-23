@@ -6,7 +6,7 @@
 /*   By: malebrun <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/02 18:56:42 by malebrun          #+#    #+#             */
-/*   Updated: 2025/12/02 19:12:18 by malebrun         ###   ########.fr       */
+/*   Updated: 2025/12/23 05:41:47 by malebrun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,4 +46,3 @@ void	rr(t_stack *stack1, t_stack *stack2)
 	rotate(stack2);
 	write(1, "rr\n", 3);
 }
-

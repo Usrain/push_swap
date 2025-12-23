@@ -6,7 +6,7 @@
 /*   By: malebrun <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/02 18:47:29 by malebrun          #+#    #+#             */
-/*   Updated: 2025/12/23 01:37:01 by malebrun         ###   ########.fr       */
+/*   Updated: 2025/12/23 05:41:10 by malebrun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	push(t_stack *take, t_stack *place)
 {
-	t_node *temp;
+	t_node	*temp;
 
 	if (!take || !take->head)
 		return ;

@@ -6,7 +6,7 @@
 /*   By: malebrun <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/02 19:12:37 by malebrun          #+#    #+#             */
-/*   Updated: 2025/12/23 02:13:49 by malebrun         ###   ########.fr       */
+/*   Updated: 2025/12/23 05:42:00 by malebrun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static void	rreverse(t_stack *stack)
 	t_node	*temp2;
 
 	if (!stack->head || !stack->head->next)
-		return;
+		return ;
 	temp = stack->head;
 	temp2 = temp;
 	while (temp->next)
@@ -35,7 +35,7 @@ static void	rreverse(t_stack *stack)
 void	rra(t_stack *stack)
 {
 	rreverse(stack);
-	write(1,"rra\n", 4);
+	write(1, "rra\n", 4);
 }
 
 void	rrb(t_stack *stack)

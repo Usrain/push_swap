@@ -1,10 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   index.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: malebrun <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/12/23 05:47:54 by malebrun          #+#    #+#             */
+/*   Updated: 2025/12/23 05:48:47 by malebrun         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "push_swap.h"
 
-static t_node *get_first(t_stack *a)
+static t_node	*get_first(t_stack *a)
 {
-	t_node *tmp;
-	t_node *tmp2;
+	t_node	*tmp;
+	t_node	*tmp2;
 
 	tmp = a->head;
 	tmp2 = tmp;
@@ -17,9 +28,9 @@ static t_node *get_first(t_stack *a)
 	return (tmp2);
 }
 
-static t_node *get_last_unsorted(t_stack *a)
+static t_node	*get_last_unsorted(t_stack *a)
 {
-	t_node *tmp;
+	t_node	*tmp;
 
 	tmp = a->head;
 	while (tmp)
@@ -33,10 +44,10 @@ static t_node *get_last_unsorted(t_stack *a)
 
 void	fill_index(t_stack *a)
 {
-	int	last;
+	int		last;
 	t_node	*min;
 	t_node	*current;
-	int	i;
+	int		i;
 
 	min = get_first(a);
 	min->index = 0;
@@ -50,7 +61,8 @@ void	fill_index(t_stack *a)
 			return ;
 		while (current)
 		{
-			if (current->index == -1 && min->value > current->value && last < current->value)
+			if (current->index == -1 && min->value > current->value
+				&& last < current->value)
 				min = current;
 			current = current->next;
 		}

@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_b.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: malebrun <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/12/23 05:41:17 by malebrun          #+#    #+#             */
+/*   Updated: 2025/12/23 05:41:32 by malebrun         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "push_swap.h"
 
@@ -23,7 +34,7 @@ void	push_b(t_stack *a, t_stack *b)
 			rr(a, b);
 		else if (a->head->inlis)
 			ra(a);
-		else if (b->head && b->head->next &&  b->head->index > spliter)
+		else if (b->head && b->head->next && b->head->index > spliter)
 		{
 			rb(b);
 			pb(a, b);

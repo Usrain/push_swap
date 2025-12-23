@@ -6,7 +6,7 @@
 /*   By: malebrun <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/03 18:11:48 by malebrun          #+#    #+#             */
-/*   Updated: 2025/12/23 05:29:14 by malebrun         ###   ########.fr       */
+/*   Updated: 2025/12/23 05:53:07 by malebrun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 static t_lis	*stack_to_arr(t_stack *stack)
 {
 	t_lis		*result;
-	t_node	*actual;
-	int		i;
+	t_node		*actual;
+	int			i;
 
 	result = malloc(sizeof(t_lis) * (stack->size));
 	if (!result)
@@ -33,7 +33,6 @@ static t_lis	*stack_to_arr(t_stack *stack)
 		actual = actual->next;
 	}
 	return (result);
-	
 }
 
 static t_lis	*fill_lis_arr(t_lis *listarr, int len)
@@ -63,15 +62,11 @@ static t_lis	*fill_lis_arr(t_lis *listarr, int len)
 	return (listarr);
 }
 
-static void	fill_in_lis(t_lis *lisarr, int size)
+static void	fill_in_lis(t_lis *lisarr, int size, int i, int max)
 {
-	int	i;
-	int	max;
 	int	indexmax;
 	int	prev;
 
-	i = 0;
-	max = 0;
 	indexmax = 0;
 	while (i < size)
 	{
@@ -82,10 +77,10 @@ static void	fill_in_lis(t_lis *lisarr, int size)
 		}
 		i++;
 	}
-	while (indexmax >=0 && (lisarr[indexmax].lisprev < 0
+	while (indexmax >= 0 && (lisarr[indexmax].lisprev < 0
 			|| lisarr[lisarr[indexmax].lisprev].value < lisarr[indexmax].value))
 	{
-		lisarr[indexmax].inlis = 1; 
+		lisarr[indexmax].inlis = 1;
 		prev = lisarr[indexmax].lisprev;
 		if (prev >= 0 && lisarr[prev].value < lisarr[indexmax].value)
 			indexmax = prev;
@@ -96,15 +91,15 @@ static void	fill_in_lis(t_lis *lisarr, int size)
 
 static int	get_best_lis(t_stack *a, int setup)
 {
-	t_lis *listarr;
-	int	count;
-	int	i;
+	t_lis	*listarr;
+	int		count;
+	int		i;
 
 	listarr = stack_to_arr(a);
 	if (!listarr)
 		return (0);
 	listarr = fill_lis_arr(listarr, a->size);
-	fill_in_lis(listarr, a->size);
+	fill_in_lis(listarr, a->size, 0, 0);
 	count = 0;
 	i = 0;
 	while (i < a->size)
@@ -121,10 +116,10 @@ static int	get_best_lis(t_stack *a, int setup)
 
 void	lis(t_stack *a)
 {
-	t_node 	*first;
-	t_node 	*bestnode;
-	int	best;
-	int	size;
+	t_node	*first;
+	t_node	*bestnode;
+	int		best;
+	int		size;
 
 	first = a->head;
 	best = get_best_lis(a, 0);
