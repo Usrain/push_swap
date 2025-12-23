@@ -6,7 +6,7 @@
 /*   By: malebrun <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/02 18:47:29 by malebrun          #+#    #+#             */
-/*   Updated: 2025/12/04 13:14:13 by malebrun         ###   ########.fr       */
+/*   Updated: 2025/12/23 01:37:01 by malebrun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ void	push(t_stack *take, t_stack *place)
 	take->head = temp->next;
 	temp->next = place->head;
 	place->head = temp;
-	take->head->prev = NULL;
+	if (take->head)
+		take->head->prev = NULL;
 	if (place->head->next)
 		place->head->next->prev = place->head;
 	take->size--;

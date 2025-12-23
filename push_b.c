@@ -23,7 +23,7 @@ void	push_b(t_stack *a, t_stack *b)
 			rr(a, b);
 		else if (a->head->inlis)
 			ra(a);
-		else if (b->head && b->head->index > spliter)
+		else if (b->head && b->head->next &&  b->head->index > spliter)
 		{
 			rb(b);
 			pb(a, b);

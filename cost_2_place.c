@@ -6,7 +6,7 @@
 /*   By: malebrun <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/13 17:58:54 by malebrun          #+#    #+#             */
-/*   Updated: 2025/12/14 18:20:25 by malebrun         ###   ########.fr       */
+/*   Updated: 2025/12/23 02:51:16 by malebrun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,23 @@ static t_node	*place_after(t_stack *a, int value)
 {
 	t_node	*maxedmin;
 	t_node	*temp;
+	t_node	*min;
+	t_node	*max;
 
 	temp = (a->head);
+	min = temp;
+	max = temp;
+	while (temp)
+	{
+		if (temp->index < min->index)
+			min = temp;
+		if (temp->index > max->index)
+			max = temp;
+		temp = temp->next;
+	}
+	if (value < min->index)
+		return (max);
+	temp = a->head;
 	maxedmin = NULL;
 	while (temp)
 	{
@@ -50,8 +65,8 @@ static t_sorter todoinb(t_stack *b, int value)
 		temp = temp->next;
 		i++;
 	}
-	result.rr = (i <= b->size / 2);
-	result.r = (i > b->size / 2);
+	result.rr = (i > b->size / 2);
+	result.r = (i <= b->size / 2);
 	result.amount = i * result.r + (b->size - i) * result.rr;
 	return (result); 
 }
@@ -71,13 +86,13 @@ static t_sorter	todoina(t_stack *a, int value, t_node *placeafter)
 	}
 	temp = a->head;
 	i = 0;
-	while (temp != placeafter)
+	while (temp && temp->prev != placeafter)
 	{
 		i++;
 		temp = temp->next;
 	}
-	result.rr = (i <= a->size / 2);
-	result.r = (i > a->size / 2);
+	result.rr = (i > a->size / 2);
+	result.r = (i <= a->size / 2);
 	result.amount = i * result.r + (a->size - i) * result.rr;
 	return (result);
 }
@@ -107,6 +122,5 @@ t_sort_cost	get_sort_cost(t_stack *a, t_stack *b, t_node *tosort)
 	total.a = todoina(a, tosort->index, place_after(a, tosort->index));
 	total.b = todoinb(b, tosort->index);
 	total.totalcost = get_total_cost(total.a, total.b);
-	printf("valeur : %d, set to sort it : %d \n", tosort->value, total.totalcost);
 	return (total);
 }

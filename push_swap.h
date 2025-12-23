@@ -6,7 +6,7 @@
 /*   By: malebrun <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 21:47:20 by malebrun          #+#    #+#             */
-/*   Updated: 2025/12/13 19:23:25 by malebrun         ###   ########.fr       */
+/*   Updated: 2025/12/23 01:30:56 by malebrun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,4 +78,8 @@ void	rr(t_stack *stack_a, t_stack *stack_b);
 void	pa(t_stack *stacka, t_stack *stackb);
 void	pb(t_stack *stacka, t_stack *stackb);
 t_sort_cost	get_sort_cost(t_stack *a, t_stack *b, t_node *tosort);
+void    do_sort(t_stack *a, t_stack *b, t_sort_cost sort);
+void    rra(t_stack *stack);
+void    rrb(t_stack *stack);
+void    rrr(t_stack *stack1, t_stack *stack2);
 #endif

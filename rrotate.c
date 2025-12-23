@@ -6,7 +6,7 @@
 /*   By: malebrun <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/02 19:12:37 by malebrun          #+#    #+#             */
-/*   Updated: 2025/12/03 19:30:19 by malebrun         ###   ########.fr       */
+/*   Updated: 2025/12/23 02:13:49 by malebrun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	rra(t_stack *stack)
 void	rrb(t_stack *stack)
 {
 	rreverse(stack);
-	write(1, "rrn\n", 4);
+	write(1, "rrb\n", 4);
 }
 
 void	rrr(t_stack *stack1, t_stack *stack2)
