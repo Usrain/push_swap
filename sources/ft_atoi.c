@@ -6,7 +6,7 @@
 /*   By: malebrun <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 15:59:35 by malebrun          #+#    #+#             */
-/*   Updated: 2025/12/23 06:14:10 by malebrun         ###   ########.fr       */
+/*   Updated: 2025/12/27 19:05:26 by malebrun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,17 +42,21 @@ long	ft_atol(char *nptr)
 	result = 0;
 	i = skip_ws(nptr, 0);
 	neg = handle_sign(nptr, &i);
+	if (!nptr[i] || nptr[i] == '\0')
+		return (2147483649);
 	while (nptr[i] >= '0' && nptr[i] <= '9')
 	{
-		if ((neg == 1 && result > (2147483647 - nptr[i] - '0') / 10)
-			|| (neg == -1 && -(result) < (-2147483648 + nptr[i] - '0') / 10))
+		if ((neg == 1 && result > (2147483647 - (nptr[i] - '0')) / 10)
+			|| (neg == -1 && -(result) < (-2147483648 + (nptr[i] - '0')) / 10))
 			return (2147483649);
 		result = result * 10 + nptr[i] - '0';
 		i++;
 	}
-	if (!(is_sign(nptr[i]) || is_whitespace(nptr[i])) && nptr[i] != '\0')
+	if (nptr[i] == '+' || nptr[i] == '-')
 		return (2147483649);
-	if (result == 0 && nptr[i] == '\0')
-		return (2147483650);
+	i = skip_ws(nptr, i);
+	if (!((nptr[i] >= '0' && nptr[i] <= '9' )
+			|| nptr[i] == '-' || nptr[i] == '+') && nptr[i] != '\0')
+		return (2147483649);
 	return ((long)(result * neg));
 }

@@ -6,7 +6,7 @@
 /*   By: malebrun <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/23 05:41:17 by malebrun          #+#    #+#             */
-/*   Updated: 2025/12/23 05:41:32 by malebrun         ###   ########.fr       */
+/*   Updated: 2025/12/27 19:06:56 by malebrun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,10 @@ void	push_b(t_stack *a, t_stack *b)
 	i = 0;
 	while (i < size)
 	{
-		if (a->head->inlis && b->head && b->head->index > spliter)
+		if (a->head && a->head->inlis && b->head
+			&& b->head->next && b->head->index > spliter)
 			rr(a, b);
-		else if (a->head->inlis)
+		else if (a->head && a->head->inlis)
 			ra(a);
 		else if (b->head && b->head->next && b->head->index > spliter)
 		{

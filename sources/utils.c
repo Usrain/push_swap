@@ -6,7 +6,7 @@
 /*   By: malebrun <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/23 04:34:58 by malebrun          #+#    #+#             */
-/*   Updated: 2025/12/23 06:46:47 by malebrun         ###   ########.fr       */
+/*   Updated: 2025/12/27 19:06:21 by malebrun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ t_node	*get_min(t_stack *a)
 
 int	aldready_sorted(t_stack *a)
 {
-	int 	intemp;
+	int		intemp;
 	t_node	*temp;
 
 	temp = a->head;

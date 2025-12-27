@@ -6,7 +6,7 @@
 /*   By: malebrun <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/02 16:24:10 by malebrun          #+#    #+#             */
-/*   Updated: 2025/12/23 06:50:15 by malebrun         ###   ########.fr       */
+/*   Updated: 2025/12/27 19:22:37 by malebrun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,18 @@ static void	final_order(t_stack *a)
 	else
 		while (a->head->index != 0)
 			rra(a);
+	end(0, a, NULL);
+}
+
+void	end(int onko, t_stack *a, t_stack *b)
+{
+	if (a)
+		free_stack(a);
+	if (b)
+		free_stack(b);
+	if (onko)
+		write(2, "Error\n", 6);
+	exit(1);
 }
 
 int	main(int ac, char **av)
@@ -60,25 +72,23 @@ int	main(int ac, char **av)
 	t_stack	*stack_a;
 	t_stack	*stack_b;
 
-	(void) ac;
+	if (ac < 2)
+		end(1, NULL, NULL);
 	stack_a = init_stack(av, 1, NULL);
 	if (!stack_a)
-		return (1);
+		end(1, NULL, NULL);
 	stack_b = create_stack();
 	if (!stack_b)
-		return (1);
+		end(1, stack_a, NULL);
 	if (!check_dup(stack_a))
-	{
-		free_stack(stack_a);
-		write(2, "ko", 2);
-		return (1);
-	}
-	//if (aldready_sorted(stack_a))
-	//	return (1);
+		end(1, stack_a, stack_b);
 	fill_index(stack_a);
+	if (aldready_sorted(stack_a))
+		end(0, stack_a, stack_b);
 	lis(stack_a);
 	push_b(stack_a, stack_b);
 	while (stack_b->head)
 		min_sort(stack_a, stack_b);
+	free_stack(stack_b);
 	final_order(stack_a);
 }

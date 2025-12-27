@@ -6,7 +6,7 @@
 /*   By: malebrun <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 21:47:20 by malebrun          #+#    #+#             */
-/*   Updated: 2025/12/23 06:43:34 by malebrun         ###   ########.fr       */
+/*   Updated: 2025/12/27 19:18:45 by malebrun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,4 +86,5 @@ void		sort_unique_case(t_stack *a, t_stack *b, t_sort_cost *sort);
 t_node		*get_max(t_stack *a);
 t_node		*get_min(t_stack *a);
 int			aldready_sorted(t_stack *a);
+void		end(int onko, t_stack *a, t_stack *b);
 #endif

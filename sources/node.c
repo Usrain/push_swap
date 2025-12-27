@@ -6,7 +6,7 @@
 /*   By: malebrun <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 21:59:05 by malebrun          #+#    #+#             */
-/*   Updated: 2025/12/23 05:38:43 by malebrun         ###   ########.fr       */
+/*   Updated: 2025/12/27 19:31:32 by malebrun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,15 +50,12 @@ void	add_back(int val, t_stack *stack)
 	t_node	*current;
 	t_node	*temp;
 
-	temp = malloc(sizeof(t_node));
+	temp = init_node(val);
 	if (!temp)
 	{
 		free_stack(stack);
 		return ;
 	}
-	temp->value = val;
-	temp->next = NULL;
-	temp->index = -1;
 	if (!stack->head)
 	{
 		stack->head = temp;
