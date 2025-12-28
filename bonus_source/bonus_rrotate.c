@@ -1,48 +1,51 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rotate.c                                           :+:      :+:    :+:   */
+/*   bonus_rrotate.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: malebrun <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/02 18:56:42 by malebrun          #+#    #+#             */
-/*   Updated: 2025/12/28 19:17:14 by malebrun         ###   ########.fr       */
+/*   Created: 2025/12/02 19:12:37 by malebrun          #+#    #+#             */
+/*   Updated: 2025/12/28 19:42:58 by malebrun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "bonus_checker.h"
 
-void	rotate(t_stack *stack)
+static void	rreverse(t_stack *stack)
 {
 	t_node	*temp;
-	t_node	*first;
+	t_node	*temp2;
 
-	first = stack->head;
-	stack->head = first->next;
+	if (!stack->head)
+		return ;
+	if (!stack->head->next)
+		return ;
 	temp = stack->head;
+	temp2 = temp;
 	while (temp->next)
 		temp = temp->next;
-	temp->next = first;
-	first->prev = temp;
-	first->next = NULL;
+	while (temp2->next != temp)
+		temp2 = temp2->next;
+	temp2->next = NULL;
+	temp->next = stack->head;
+	stack->head = temp;
+	stack->head->next->prev = stack->head;
 	stack->head->prev = NULL;
 }
 
-void	ra(t_stack *stack)
+void	rra(t_stack *stack)
 {
-	rotate(stack);
-	write(1, "ra\n", 3);
+	rreverse(stack);
 }
 
-void	rb(t_stack *stack)
+void	rrb(t_stack *stack)
 {
-	rotate(stack);
-	write(1, "rb\n", 3);
+	rreverse(stack);
 }
 
-void	rr(t_stack *stack1, t_stack *stack2)
+void	rrr(t_stack *stack1, t_stack *stack2)
 {
-	rotate(stack1);
-	rotate(stack2);
-	write(1, "rr\n", 3);
+	rreverse(stack1);
+	rreverse(stack2);
 }

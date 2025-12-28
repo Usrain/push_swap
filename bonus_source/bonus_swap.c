@@ -1,48 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rotate.c                                           :+:      :+:    :+:   */
+/*   bonus_swap.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: malebrun <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/02 18:56:42 by malebrun          #+#    #+#             */
-/*   Updated: 2025/12/28 19:17:14 by malebrun         ###   ########.fr       */
+/*   Created: 2025/12/02 18:19:41 by malebrun          #+#    #+#             */
+/*   Updated: 2025/12/28 19:43:10 by malebrun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "bonus_checker.h"
 
-void	rotate(t_stack *stack)
+void	swap_first(t_stack *stack)
 {
-	t_node	*temp;
 	t_node	*first;
+	t_node	*second;
 
+	if (!stack->head || !stack->head->next)
+		return ;
 	first = stack->head;
-	stack->head = first->next;
-	temp = stack->head;
-	while (temp->next)
-		temp = temp->next;
-	temp->next = first;
-	first->prev = temp;
-	first->next = NULL;
+	second = first->next;
+	first->next = second->next;
+	second->next = first;
+	stack->head = second;
 	stack->head->prev = NULL;
+	stack->head->next->prev = stack->head;
 }
 
-void	ra(t_stack *stack)
+void	sa(t_stack *stack)
 {
-	rotate(stack);
-	write(1, "ra\n", 3);
+	swap_first(stack);
 }
 
-void	rb(t_stack *stack)
+void	sb(t_stack *stack)
 {
-	rotate(stack);
-	write(1, "rb\n", 3);
+	swap_first(stack);
 }
 
-void	rr(t_stack *stack1, t_stack *stack2)
+void	ss(t_stack *stack1, t_stack *stack2)
 {
-	rotate(stack1);
-	rotate(stack2);
-	write(1, "rr\n", 3);
+	swap_first(stack1);
+	swap_first(stack2);
 }
