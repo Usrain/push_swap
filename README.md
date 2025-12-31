@@ -18,13 +18,11 @@ To use the program :
 ```
 # Technical choice
 
-This push_swap uses first search for the longest incremental sequence in every circular rotation of the stack then calculate the cost to push every value that is not in the LIS to sort in the most efficient way, see more in [resource section](#rescources)
+This push_swap uses first search for the longest increasing sequence in every circular rotation of the stack then calculate the cost to push every value that is not in the LIS to sort in the most efficient way, see more in [resource section](#rescources)
 
 # Resources
 
 https://www.geeksforgeeks.org/c/implement-stack-in-c/ was used to understand how stacks works
-AI was used in this project for a better understanding of the Turk algorithm, such as visual examples
-and basic explanation.
 
 # Understand the return
 
@@ -74,4 +72,4 @@ To use the program :
 ./checker <number> [<number>] [<"number [number]">] [...]
 ```
 
-it will then open you the prompt to enter your instruction, each instruction need to be on is own line, then press ctrl + D to test your instructions
+it will then open you the prompt to enter your instruction, each instruction need to be on its own line, then press ctrl + D to test your instructions
