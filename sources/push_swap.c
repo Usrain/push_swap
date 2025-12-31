@@ -6,7 +6,7 @@
 /*   By: malebrun <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/02 16:24:10 by malebrun          #+#    #+#             */
-/*   Updated: 2025/12/27 19:22:37 by malebrun         ###   ########.fr       */
+/*   Updated: 2025/12/31 15:42:52 by malebrun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ int	main(int ac, char **av)
 	fill_index(stack_a);
 	if (aldready_sorted(stack_a))
 		end(0, stack_a, stack_b);
+	handle_small_size(stack_a, stack_b);
 	lis(stack_a);
 	push_b(stack_a, stack_b);
 	while (stack_b->head)

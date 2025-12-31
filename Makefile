@@ -6,7 +6,7 @@
 #    By: malebrun <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/29 21:24:53 by malebrun          #+#    #+#              #
-#    Updated: 2025/12/28 20:38:55 by malebrun         ###   ########.fr        #
+#    Updated: 2025/12/31 15:47:24 by malebrun         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,8 @@ SOURCES = cost_to_place.c \
 		parser.c \
 		push_swap.c \
 		rrotate.c \
-		swap.c
+		swap.c \
+		sort_little.c
 BONUSSOURCES = bonus_actionnode.c \
 			bonus_node.c \
 			bonus_rotate.c \
